@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
 import FormErrors from "./FormErrors";
@@ -25,12 +24,18 @@ class App extends Component {
     }
 
     componentDidMount() {
-        axios.get(` https://schul-cloud.org:8080/content/resources/59919169c9df580090bc0815`,
-            {headers: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJhY2NvdW50SWQiOiIwMDAwZDIzMTgxNmFiYmE1ODQ3MTRjOWYiLCJ1c2VySWQiOiIwMDAwZDIzMTgxNmFiYmE1ODQ3MTRjOWUiLCJpYXQiOjE1MTA3MzUwNjIsImV4cCI6MTUxMzMyNzA2MiwiYXVkIjoiaHR0cHM6Ly9zY2h1bC1jbG91ZC5vcmciLCJpc3MiOiJmZWF0aGVycyIsInN1YiI6ImFub255bW91cyJ9.OKdBL4TJVc9weiF7l-tv6fT7oFrFiCvAOyqey141NPM'}})
-            .then(res => {
-                alert(JSON.stringify(res.data));
-                this.setState(res.data);
-            });
+        axios.get(
+            ` https://schul-cloud.org:8080/content/resources/59919169c9df580090bc0815`,
+            {
+                headers: {
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJhY2NvdW50SWQiOiIwMDAwZDIzMTgxNmFiYmE1ODQ3MTRjOW' +
+                    'YiLCJ1c2VySWQiOiIwMDAwZDIzMTgxNmFiYmE1ODQ3MTRjOWUiLCJpYXQiOjE1MTA3MzUwNjIsImV4cCI6MTUxMzMyNzA2MiwiYXVkIjoiaHR0cHM6L' +
+                    'y9zY2h1bC1jbG91ZC5vcmciLCJpc3MiOiJmZWF0aGVycyIsInN1YiI6ImFub255bW91cyJ9.OKdBL4TJVc9weiF7l-tv6fT7oFrFiCvAOyqey141NPM'
+                }
+            }
+        ).then(res => {
+            this.setState(res.data);
+        });
     }
 
     handleOnChange(event) {
@@ -46,7 +51,7 @@ class App extends Component {
                     <div className={'panel panel-default'}>
                         <FormErrors/>
                     </div>
-                    <img src={this.state.thumbnail} alt={'Thumbnail'}>
+                    <img className={'container-fluid'} src={this.state.thumbnail} alt={'Thumbnail'}>
                     </img>
                     <div className={'form-group'}>
                         <label>Title:</label>
